@@ -45,6 +45,8 @@ function init() {
 }
 
 function resetGame() {
+  document.querySelector('.modal-loss').style.display = 'none';
+  document.querySelector('.modal-win').style.display = 'none';
   gGameStats = false;
   gIslight = false;
   clearInterval(timerInterval);
@@ -104,7 +106,7 @@ function checkGameOver(clickedCell, elCell) {
     if (gLossCounter === 3) {
       pauseStopper();
       showAllMines();
-      console.log('GAME OVER!!!!');
+      document.querySelector('.modal-loss').style.display = 'block';
       toggleEmoji(gGameStats);
       gGame.isOn = false;
       elCell.style.backgroundColor = 'red';
@@ -161,7 +163,7 @@ function checkGameOver(clickedCell, elCell) {
     showAllNums();
     gGameStats = true;
     toggleEmoji(gGameStats);
-    console.log('you win!!!!');
+    document.querySelector('.modal').style.display = 'block';
     gGame.isOn = false;
   }
 }

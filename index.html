@@ -22,13 +22,19 @@
     </div>
     <div class="lights-container">
         <div class="lights">
-        <img src="assets/img/off.png" class="isOff"  onclick="onToggleHint(this)">
-        <img src="assets/img/off.png" class="isOff"  onclick="onToggleHint(this)">
-        <img src="assets/img/off.png" class="isOff"  onclick="onToggleHint(this)">
-    </div>
-    </div>
-        <div class="table-container">
+            <img src="assets/img/off.png" class="isOff"  onclick="onToggleHint(this)">
+            <img src="assets/img/off.png" class="isOff"  onclick="onToggleHint(this)">
+            <img src="assets/img/off.png" class="isOff"  onclick="onToggleHint(this)">
         </div>
+    </div>
+    <div class="modal-win" hidden>
+        <div class="modal-content-win"><div class="modal-content-txt-win">I'm so proud!!!</div></div>
+    </div>
+    <div class="modal-loss" hidden>
+        <div class="modal-content-loss"><div class="modal-content-txt-loss">Damn...</div></div>
+    </div>
+    <div class="table-container">
+    </div>
         <div class="btn-parent-levels">
             <button class="begLvl" data-benScore="0" data-size="4" onclick="setGameLevel(4)">Beginner(16)</button>
             <button class="medLvl" data-medScore="0" data-size="8" onclick="setGameLevel(8)">Medium(64)</button>

@@ -140,6 +140,7 @@ function onLeftClick(elCell, ev, i, j) {
     gTimer = true;
   }
   showCell(elCell, cell);
+  if (cell.minesAroundCount === 0) openEmptyCells(gBoard, i, j);
   checkGameOver(cell, elCell);
   gGame.shownCount++;
 }
@@ -370,4 +371,18 @@ function sevenBoom() {
     }
   }
   gIsSevenBoom = true;
+}
+
+function openEmptyCells(board, cellI, cellJ) {
+  var neighbors = findNeighbors(board, cellI, cellJ);
+  for (let i = 0; i < neighbors.length; i++) {
+    var neighbor = neighbors[i];
+    if (neighbor.isMarked || neighbor.isShown || neighbor.isMine) continue;
+    var elCell = document.querySelector(
+      `[data-i="${neighbor.i}"][data-j="${neighbor.j}"]`
+    );
+    showCell(elCell, neighbor);
+    if (neighbor.minesAroundCount) continue;
+    openEmptyCells(board, neighbor.i, neighbor.j);
+  }
 }

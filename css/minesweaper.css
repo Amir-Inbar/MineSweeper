@@ -4,10 +4,13 @@
   margin:0;
   padding: 0;
   box-sizing: border-box;
-  }
-  body {
-    /* background-color: rgb(243, 245, 247); */
-    background-image: url('/assets/img/image-body.jpg');
+}
+body {
+  /* background-color: rgb(243, 245, 247); */
+  background-image: url('/assets/img/sea-background-image.jpg');
+  background-size: 100% 100%;
+height: 850px;
+z-index: 1;
   }
 
   .stopWatch {
@@ -66,12 +69,16 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+    
   }
   .lights {
     background: transparent;
 padding: 10px;
     cursor: pointer;
     border-radius: 50%;
+    background-image: url('/assets/img/image-body.jpg');
+    margin-top: 1%;
+    margin-bottom: 1%;
   }
   .light-stay-on {
     cursor: default;
@@ -84,18 +91,19 @@ padding: 10px;
   margin: auto;
   width: 550px;
   height: 550px;
-  background-color: lightslategrey;
+  background-color: transparent;
   /* color: grey; */
   text-align: center;
   /* padding: 10px; */
   -webkit-box-shadow: 9px 9px 15px 3px rgba(0,0,0,0.63); 
 box-shadow: 9px 9px 15px 3px rgba(0,0,0,0.63);
 margin-bottom: 1%;
-
+border-radius: 20%;
 }
 .row-prop {
   background-image: url('/assets/img/background.jpg');
   font-size: auto;
+  border-radius: 25%;
 }
 
 .mark-cell {
@@ -103,6 +111,7 @@ margin-bottom: 1%;
   color:lightsalmon ;
 }
 .cell-prop {
+  border-radius: 25%;
   text-align: center;
   border: 1px solid black;
   background: white;
@@ -139,11 +148,69 @@ margin-bottom: 1%;
 
 .curr-flag {
   text-align: center;
+  border-radius: 20%;
+  font-size: 20px;
   opacity: 1;
   width: auto;
   height: auto;
   transition: .6;
 }
+.modal-win {
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.modal-content-win {
+  position: absolute;
+  border: 3px solid black;
+  color: black;
+  display: initial;
+  width: 800px;
+  height: 235px;
+  background-image: url('/assets/img/victory-image.jpg');
+  background-repeat: round;
+  bottom: 75%;
+  right: 30%;
+  display: inline-block;
+}
+
+.modal-content-txt-win {
+font-size: 40px;
+margin-top: 22%;
+background:linear-gradient(lightblue,lightgray, orange);
+font-style: italic;
+}
+.modal-loss {
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.modal-content-loss {
+  position: absolute;
+  border: 3px solid black;
+  color: black;
+  display: initial;
+  width: 800px;
+  height: 235px;
+  background-image: url('/assets/img/loss-image.jpg');
+  background-repeat: round;
+  bottom: 75%;
+  right: 30%;
+  display: inline-block;
+}
+
+.modal-content-txt-loss {
+font-size: 40px;
+margin-top: 22%;
+background:linear-gradient(lightblue,lightgray, orange);
+font-style: italic;
+}
+
+
 .btn-parent-levels {
   position: absolute;
   border: 1px solid lightblue;
@@ -265,7 +332,7 @@ footer {
   background-image: url('/assets/img/sea.mp4');
   /* position: relative; */
   position: fixed;
-  height: 50px;
+  height: 70px;
   margin-top: 2%;
   width: 100%;
   float: right;

@@ -34,3 +34,19 @@ function logTMat(boardMatrix) {
     )
   );
 }
+
+function getColor(idxColor) {
+  var colors = [
+    'yellow',
+    'blue',
+    'orange',
+    'red',
+    'purple',
+    'green',
+    'brown',
+    'pink',
+  ];
+  for (var i = idxColor; i < colors.length; i++) {
+    return colors[idxColor];
+  }
+}

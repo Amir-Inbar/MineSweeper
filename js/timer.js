@@ -7,7 +7,7 @@ function renderTime() {
     gStopperStart = true;
   }
 }
-
+// convert time
 function timeTostring(time) {
   if (!time) time = 1;
   var diffInHrs = time / 3600000;
@@ -29,24 +29,20 @@ function timeTostring(time) {
   return `${formattedMM}:${formattedSS}:${formattedMS}`;
 }
 var gStopper = document.querySelector('#display');
-
+// display time on selected element
 function displayTime(txt) {
-  // localStorage.setItem('stopper', txt);
   var stopper = document.querySelector('#display');
   stopper.innerHTML = localStorage.getItem('stopper');
   stopper.innerHTML = txt;
 }
-//[4,8,12]
-//storedScores[gLevel.size]
+
 var gGameStartTime = null;
 function startStopper() {
   gGameStartTime = Date.now();
-  // var gGameStartTime = Date.now() - gElapsedTime;
   timerInterval = setInterval(function printTime() {
     gElapsedTime = Date.now() - gGameStartTime;
 
     displayTime(timeTostring(gElapsedTime));
-    // displayTime(timeTostring(gElapsedTime));
   }, 10);
 }
 function pauseStopper() {
