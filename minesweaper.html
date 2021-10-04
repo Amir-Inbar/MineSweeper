@@ -5,26 +5,61 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/minesweaper.css">
-</head>
-<body onload="init()">
-
-
-
-    <div class="lives">
-        <h1>Life Left:<span class="lives-count">❤️❤️❤️</span></h1>
+    <link rel="stylesheet" href="css/minesweaper.css"></head>
+    <link rel="shortcut icon" href="#">
+    <body onload="init()">
+        <div class="stopWatch">
+        <span class="time" id="display">00:00:00</span>
     </div>
-    <div class="table-container"></div>
-<div class="btn-parent-levels">
-<button class="begLvl1" data-size='4' onclick="setGameLevel(4)">Beginner(16)</button>
-<button class="begLvl2" data-size='8' onclick="setGameLevel(8)">Medium(64)</button>
-<button class="begLvl3" data-size='12' onclick="setGameLevel(12)">Expert(144)</button>
-</div>
-<button class="reset" onclick="resetGame()">reset</button>
+        <div class="playerScore">
+        <h1 class="score">Best Score:<span class="player-score">0</span></h1>
+    </div>
+    <div class="mood">
+        <h1>My Mood:<span class="emoji-mood" onclick="resetGame()">😁</span></h1>
+    </div>
+    <div class="lives">
+        <h1>Life Left:<span class="lives-count"">❤❤❤</span></h1>
+    </div>
+    <div class="lights-container">
+        <div class="lights">
+        <img src="assets/img/off.png" class="isOff"  onclick="onToggleHint(this)">
+        <img src="assets/img/off.png" class="isOff"  onclick="onToggleHint(this)">
+        <img src="assets/img/off.png" class="isOff"  onclick="onToggleHint(this)">
+    </div>
+    </div>
+        <div class="table-container">
+        </div>
+        <div class="btn-parent-levels">
+            <button class="begLvl" data-benScore="0" data-size="4" onclick="setGameLevel(4)">Beginner(16)</button>
+            <button class="medLvl" data-medScore="0" data-size="8" onclick="setGameLevel(8)">Medium(64)</button>
+            <button class="expLvl" data-expScore="0" data-size="10" onclick="setGameLevel(12)">Expert(144)</button>
+        </div>
 
+            <div class="btn-parent-others">
+                <button class="reset"  onclick="resetGame()">Reset Game</button>
+                <button class="safe" onclick="onSafeClick(event)">Safe Click</button>
+                <span class="safe-text">3 click available</span>
+                <button class="pos-mines" onclick="getUserMineCount()">Position Mines</button>
+                <span class="posmine-text">Left X mines</span>
+                <button class="undo" onclick="gameStepBack()">UNDO</button>
+                <button class="seven-boom" onclick="sevenBoom()">7 BOOM!</button>
+        </div>
+    
+
+
+
+        <div class="video-container">
+        <footer>
+                <video loop src="assets/img/sea.mp4" autoplay muted width="100%"></video>
+                <div class="footer-title-container">
+                    <p class="footer-title">Amir Inbar</p>
+                </div>
+        </footer>
+    </div>
     <script src="js/utilis.js"></script>
     <script src="js/board.js"></script>
     <script src="js/dom.js"></script>
+    <script src="js/timer.js"></script>
     <script src="js/main.js"></script>
-    </body>
+</body>
 </html>

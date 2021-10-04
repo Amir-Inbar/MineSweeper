@@ -26,14 +26,14 @@ function addMines(cellI, cellJ) {
     }
   }
   while (minesToAdd > 0) {
-    var randCell = cellsCollect[randomInteger(0, cellsCollect.length - 1)];
+    var randCell = cellsCollect[getRandomInt(0, cellsCollect.length - 1)];
     var random = Math.random() < 1 / (gLevel.size * gLevel.size);
     if (random && !randCell.isMine) {
       randCell.isMine = true;
       minesToAdd--;
-      console.log(minesToAdd);
     }
   }
+  if (cell.isMine) gMinesLocation.push(cell);
 }
 
 function countNegsAround(boardSize) {
