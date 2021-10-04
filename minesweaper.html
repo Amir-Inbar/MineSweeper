@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/minesweaper.css">
+</head>
+<body onload="init()">
+
+
+
+    <div class="lives">
+        <h1>Life Left:<span class="lives-count">❤️❤️❤️</span></h1>
+    </div>
+    <div class="table-container"></div>
+<div class="btn-parent-levels">
+<button class="begLvl1" data-size='4' onclick="setGameLevel(4)">Beginner(16)</button>
+<button class="begLvl2" data-size='8' onclick="setGameLevel(8)">Medium(64)</button>
+<button class="begLvl3" data-size='12' onclick="setGameLevel(12)">Expert(144)</button>
+</div>
+<button class="reset" onclick="resetGame()">reset</button>
+
+    <script src="js/utilis.js"></script>
+    <script src="js/board.js"></script>
+    <script src="js/dom.js"></script>
+    <script src="js/main.js"></script>
+    </body>
+</html>
