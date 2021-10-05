@@ -100,6 +100,7 @@ function renderColors() {
 
 function onLeftClick(elCell, ev, i, j) {
   var cell = gBoard[i][j];
+  if (cell.exploded) return;
   if (gIsSevenBoom) {
     countNegsAround(gLevel.size);
     gMinesLocation = [];
@@ -322,10 +323,6 @@ function setManPosMines(i, j) {
 }
 
 function gameStepBack() {
-  // click mine
-  // click empty cell
-  // click number cell
-  // cover all of them
   var lastCell = gCellsDetails.pop();
   var cell = gBoard[lastCell.i][lastCell.j];
   var elCell = document.querySelector(
@@ -351,10 +348,7 @@ function gameStepBack() {
     elCell.innerHTML = `<span></span>`;
   }
 }
-// 1 7
-// 7 1
-// 1 14
-//
+
 function sevenBoom() {
   if (gIsFirstCellClick) {
     alert('You cant activate after cell click');
@@ -381,6 +375,7 @@ function openEmptyCells(board, cellI, cellJ) {
     var elCell = document.querySelector(
       `[data-i="${neighbor.i}"][data-j="${neighbor.j}"]`
     );
+    gCellsDetails.push(neighbor);
     showCell(elCell, neighbor);
     if (neighbor.minesAroundCount) continue;
     openEmptyCells(board, neighbor.i, neighbor.j);

@@ -41,8 +41,7 @@ function init() {
 }
 
 function resetGame() {
-  document.querySelector('.modal-loss').style.display = 'none';
-  document.querySelector('.modal-win').style.display = 'none';
+  document.querySelector('.modal').style.display = 'none';
   gGameStats = false;
   gIslight = false;
   clearInterval(timerInterval);
@@ -54,22 +53,6 @@ function resetGame() {
   gBoard = null;
   gLossCounter = 0;
   init();
-}
-
-function showAllNums() {
-  for (let i = 0; i < gNumsLocation.length; i++) {
-    var numLocation = gNumsLocation[i];
-    var cellI = numLocation.i;
-    var cellj = numLocation.j;
-
-    var elCell = document.querySelector(
-      `[data-i="${cellI}"][data-j="${cellj}"]`
-    );
-    if (numLocation.minesAroundCount === 0) continue;
-    elCell.innerHTML = numLocation.minesAroundCount;
-    elCell.style.opacity = 1;
-    numLocation.isShown = true;
-  }
 }
 
 function showAllMines() {
@@ -116,10 +99,13 @@ function checkGameOver(clickedCell, elCell) {
       gGameStats = false;
       gameStatusImage();
     }
-    setTimeout(() => {
-      clickedCell.isShown = false;
-      if (gLossCounter <= 3) elCell.style.opacity = 0;
-    }, 1000);
+    // setTimeout(() => {
+    //   if (gLossCounter <= 3) elCell.style.opacity = 0;
+    // }, 1000);
+    elCell.style.backgroundColor = 'red';
+    clickedCell.isShown = true;
+    clickedCell['exploded'] = true;
+
     gLossCounter++;
     if (gLossCounter === 1)
       document.querySelector('.lives-count').innerHTML = '❤️❤️';
@@ -160,11 +146,9 @@ function checkGameOver(clickedCell, elCell) {
     }
   }
 
-  console.log(gLevel);
   if (markCount === gLevel.mines) {
     pauseStopper();
     getPlayerBestScore(gLevel, true);
-    showAllNums();
     gGameStats = true;
     toggleEmoji(gGameStats);
     gGame.isOn = false;
