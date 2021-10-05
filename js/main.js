@@ -29,6 +29,8 @@ var timerInterval;
 var gBombExplodedCount = 0;
 var backGroundSound = new Audio('assets/img/background-audio.mp3');
 var mineSound = new Audio('assets/img/mine-sound.wav');
+var victorySound = new Audio('assets/img/victory.mp3');
+var lossSound = new Audio('assets/img/lose-sound.mp3');
 
 function init() {
   backGroundSound.play();
@@ -77,10 +79,14 @@ function gameStatusImage() {
     modal.style.display = 'block';
     modalTxt.innerText = 'You just save the world!!!';
     modalImage.style.backgroundImage = "url('assets/img/victory-image.jpg')";
+    backGroundSound.pause();
+    victorySound.play();
   } else {
     modal.style.display = 'block';
     modalTxt.innerText = 'DAMN...';
     modalImage.style.backgroundImage = "url('assets/img/loss-image.jpg')";
+    backGroundSound.pause();
+    lossSound.play();
   }
 }
 function checkGameOver(clickedCell, elCell) {

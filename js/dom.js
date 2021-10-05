@@ -312,6 +312,7 @@ function sevenBoom() {
       if (counter % 7 === 0 || (counter - 7) % 10 === 0) {
         cell.isMine = true;
         gLevel.mines++;
+        console.log(counter, 'i:', i, 'j:', j);
       }
     }
   }
