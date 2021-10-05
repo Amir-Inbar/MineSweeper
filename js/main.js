@@ -13,11 +13,7 @@ var gGame = {
 var gBestScore1 = 16;
 var gBestScore2 = 64;
 var gBestScore3 = 144;
-// var gResultsMap = {
-//   highScoreLvl1: gBestScore1,
-//   highScoreLvl1: gBestScore2,
-//   highScoreLvl1: gBestScore3,
-// };
+
 var gTimeLeft;
 var gLossCounter = 0;
 var gGameStats = false;
@@ -32,11 +28,11 @@ var gIslight = false;
 var gClickCount = 0;
 var gElapsedTime = 0;
 var timerInterval;
-var backGroundSound = new Audio('./assets/img/background-audio.mp3');
-var mineSound = new Audio('./assets/img/mine-sound.wav');
+var backGroundSound = new Audio('assets/img/background-audio.mp3');
+var mineSound = new Audio('assets/img/mine-sound.wav');
 
 function init() {
-  // backGroundSound.play();
+  backGroundSound.play();
   var gBoard = createBoardGame((gLevel.size = 4));
   getCreateTable(gBoard);
   if (timerInterval) clearInterval(timerInterval);
@@ -94,22 +90,31 @@ function showAllMines() {
     }
   }
 }
-function checkGameOver(clickedCell, elCell) {
-  // game ends when all mines are marked
-  // and all the other cells are shown
-  if (clickedCell.isShown && clickedCell.isMine) {
-    // don't pause the clock until 3 lifes
-    // show him that he click a bomb with sound
-    // do a click transition with a bomb
-    // if the counter reach to 3 he can't click anything
 
+function gameStatusImage() {
+  var modal = document.querySelector('.modal');
+  var modalTxt = document.querySelector('.modal-content-txt');
+  var modalImage = document.querySelector('.modal-image');
+  if (gGameStats) {
+    modal.style.display = 'block';
+    modalTxt.innerText = 'You just save the world!!!';
+    modalImage.style.backgroundImage = "url('assets/img/victory-image.jpg')";
+  } else {
+    modal.style.display = 'block';
+    modalTxt.innerText = 'DAMN...';
+    modalImage.style.backgroundImage = "url('assets/img/loss-image.jpg')";
+  }
+}
+function checkGameOver(clickedCell, elCell) {
+  if (clickedCell.isShown && clickedCell.isMine) {
     if (gLossCounter === 3) {
       pauseStopper();
       showAllMines();
-      document.querySelector('.modal-loss').style.display = 'block';
       toggleEmoji(gGameStats);
       gGame.isOn = false;
       elCell.style.backgroundColor = 'red';
+      gGameStats = false;
+      gameStatusImage();
     }
     setTimeout(() => {
       clickedCell.isShown = false;
@@ -157,14 +162,13 @@ function checkGameOver(clickedCell, elCell) {
 
   console.log(gLevel);
   if (markCount === gLevel.mines) {
-    console.log(gTimeLeft);
     pauseStopper();
     getPlayerBestScore(gLevel, true);
     showAllNums();
     gGameStats = true;
     toggleEmoji(gGameStats);
-    document.querySelector('.modal').style.display = 'block';
     gGame.isOn = false;
+    gameStatusImage();
   }
 }
 
