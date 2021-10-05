@@ -32,8 +32,8 @@ var gIslight = false;
 var gClickCount = 0;
 var gElapsedTime = 0;
 var timerInterval;
-var backGroundSound = new Audio('/assets/img/background-audio.mp3');
-var mineSound = new Audio('/assets/img/mine-sound.wav');
+var backGroundSound = new Audio('./assets/img/background-audio.mp3');
+var mineSound = new Audio('./assets/img/mine-sound.wav');
 
 function init() {
   // backGroundSound.play();

@@ -176,11 +176,11 @@ function onToggleHint(elLight) {
   if (lights) return;
 
   if (elLight.className === 'isOff') {
-    elLight.src = '/assets/img/on.png';
+    elLight.src = './assets/img/on.png';
     elLight.className = 'isOn';
     gIsHintOn = true;
   } else if (elLight.className === 'isOn') {
-    elLight.src = '/assets/img/off.png';
+    elLight.src = './assets/img/off.png';
     elLight.className = 'isOff';
     gIsHintOn = false;
   }
