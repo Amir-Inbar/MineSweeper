@@ -28,6 +28,7 @@ var gIslight = false;
 var gClickCount = 0;
 var gElapsedTime = 0;
 var timerInterval;
+var gBombExplodedCount = 0;
 var backGroundSound = new Audio('assets/img/background-audio.mp3');
 var mineSound = new Audio('assets/img/mine-sound.wav');
 
@@ -102,9 +103,11 @@ function checkGameOver(clickedCell, elCell) {
     // setTimeout(() => {
     //   if (gLossCounter <= 3) elCell.style.opacity = 0;
     // }, 1000);
-    elCell.style.backgroundColor = 'red';
-    clickedCell.isShown = true;
-    clickedCell['exploded'] = true;
+    if (clickedCell.isMine) {
+      elCell.style.backgroundColor = 'red';
+      clickedCell.isShown = true;
+      clickedCell['exploded'] = true;
+    }
 
     gLossCounter++;
     if (gLossCounter === 1)
@@ -145,8 +148,10 @@ function checkGameOver(clickedCell, elCell) {
       }
     }
   }
-
-  if (markCount === gLevel.mines) {
+  console.log('gLossCounter', gLossCounter);
+  console.log('gLevel.mines', gLevel.mines);
+  if (markCount === gLevel.mines || gLossCounter + markCount === gLevel.mines) {
+    gBombExplodedCount = 0;
     pauseStopper();
     getPlayerBestScore(gLevel, true);
     gGameStats = true;
@@ -158,6 +163,7 @@ function checkGameOver(clickedCell, elCell) {
 
 function setGameLevel(levelSize = 10) {
   // getPlayerBestScore(levelSize);
+  document.querySelector('.modal').style.display = 'none';
   gBoard = [];
   gLevel.size = levelSize;
   if (levelSize === 4) {

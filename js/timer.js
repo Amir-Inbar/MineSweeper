@@ -32,7 +32,6 @@ var gStopper = document.querySelector('#display');
 // display time on selected element
 function displayTime(txt) {
   var stopper = document.querySelector('#display');
-  stopper.innerHTML = localStorage.getItem('stopper');
   stopper.innerHTML = txt;
 }
 
