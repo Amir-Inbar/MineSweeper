@@ -53,3 +53,22 @@ function resetStopper() {
   displayTime('00:00:00');
   gElapsedTime = 0;
 }
+
+function getPlayerBestScore(gameLevel, isWin) {
+  var storedScores = getLSItem('storedScores');
+  if (!storedScores) storedScores = {};
+
+  var storedLevelScore = storedScores[gameLevel.size];
+  if (!storedLevelScore) {
+    storedLevelScore = 1000 * 60 * 60 * 24 * 365 * 10;
+    setLSItem('storedScores', storedScores);
+  }
+
+  if (isWin && gElapsedTime < storedLevelScore) {
+    storedScores[gameLevel.size] = gElapsedTime;
+    setLSItem('storedScores', storedScores);
+  }
+
+  var scoreTxtSpan = document.querySelector('.player-score');
+  scoreTxtSpan.innerHTML = timeTostring(storedScores[gameLevel.size]);
+}
