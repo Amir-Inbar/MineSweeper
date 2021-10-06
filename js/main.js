@@ -40,10 +40,30 @@ function init() {
   document.querySelector('.lives-count').innerHTML = '❤️❤️❤️';
 }
 
+function restartLights() {
+  var lightsStayOn = document.querySelectorAll('.light-stay-on');
+  if (lightsStayOn) {
+    for (let i = 0; i < lightsStayOn.length; i++) {
+      lightsStayOn[i].classList.remove('light-stay-on');
+      lightsStayOn[i].classList.add('isOff');
+      lightsStayOn[i].src = 'assets/img/off.png';
+    }
+  }
+  var lightsOn = document.querySelectorAll('.isOn');
+  if (lightsOn) {
+    for (let i = 0; i < lightsOn.length; i++) {
+      lightsOn[i].classList.remove('isOn');
+      lightsOn[i].classList.add('isOff');
+      lightsOn[i].src = 'assets/img/off.png';
+    }
+  }
+}
 function resetGame() {
+  restartLights();
   document.querySelector('.modal').style.display = 'none';
   gGameStats = false;
   gIslight = false;
+  gIsHintOn = false;
   clearInterval(timerInterval);
   backGroundSound.currentTime = 0;
   gIsFirstCellClick = false;
@@ -119,7 +139,6 @@ function checkGameOver(clickedCell, elCell) {
       document.querySelector('.lives-count').innerHTML = '';
     gGameStats = false;
     toggleEmoji(gGameStats);
-    // return;
   }
 
   var markCount = 0;
