@@ -8,7 +8,7 @@
 body {
   /* background-color: rgb(243, 245, 247); */
   background-image: url('../assets/img/sea-background-image.jpg');
-  background-repeat: content;
+  background-repeat:no-repeat;
   background-size: 100% 100%;
 height: 650px;
 z-index: 1;
@@ -65,18 +65,21 @@ z-index: 1;
 
   }
   .lights-container {
-    display: flex;
+    position: relative;
+    /* display: flex; */
     justify-content: center;
     align-items: center;
     text-align: center;
   }
   .lights {
+    position: absolute;
+    left:10%;
     background: transparent;
-padding: 10px;
+    
     cursor: pointer;
-    border-radius: 80%;
+    border-radius: 50%;
     background-image: url('../assets/img/image-body.jpg');
-    margin-top: 1%;
+    margin-top: 11%;
     margin-bottom: 1%;
   }
   .isOff {
@@ -92,11 +95,13 @@ padding: 10px;
   }
   
 .main-table {
+  left:1%;
   border: 1px solid black;
   position: relative;
   margin: auto;
-  width: 370px;
-  height: 370px;
+  margin-top: 1%;
+  width: 470px;
+  height: 470px;
   background-color: transparent;
   /* color: grey; */
   text-align: center;
@@ -109,42 +114,42 @@ border-radius: 20%;
 .row-prop {
   background-image: url('../assets/img/background.jpg');
   font-size: auto;
-  border-radius: 25%;
+  border-radius: 50%;
 }
 .mark-cell {
-  border-radius: 25%;
+  border-radius: 50%;
   background-color:lightsalmon;
   text-align: center;
   border: 1px solid lightsalmon;
   opacity: 1;
   color:lightsalmon ;
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   font-size: 20px;
 }
 
 .cell-prop {
-  border-radius: 25%;
+  border-radius: 50%;
   text-align: center;
   border: 1px solid black;
 background-color: teal;
   background: white;
   opacity: 0;
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   transition: .6;
-  font-size: 25px;
+  font-size: 30px;
 }
 
 .med-table {
+  width: 35px;
+  height: 35px;
+  font-size: 25px;
+}
+.lrg-table {
   width: 30px;
   height: 30px;
   font-size: 20px;
-}
-.lrg-table {
-  width: 20px;
-  height: 20px;
-  font-size: 15px;
 }
 
 .show-cell{
@@ -171,27 +176,27 @@ background-color: teal;
 }
 .modal {
   position: relative;
-  left:5%;
+  /* left:5%; */
   
-  bottom:40%
+  /* bottom:% */
 }
 
 .modal-image {
+  left:5%;
   transition: .6s;
   position: absolute;
   border: 3px solid black;
   color: black;
-  /* display: initial; */
   width: 450px;
-  height: 100px;
+  height: 150px;
   background-repeat: round;
   /* bottom: 60%; */
-  /* display: inline-block; */
+  /* display: inline; */
 }
 
 .modal-content-txt {
-font-size: 40px;
-margin-top: 15%;
+font-size: 30px;
+margin-top: 24%;
 background:linear-gradient(lightblue,lightgray, orange);
 font-style: italic;
 }
@@ -203,7 +208,7 @@ font-style: italic;
   justify-content: center;
   align-items: center;
   text-align: center;
-  top:25%;
+  top:45%;
   left:75%;
   width: 150px;
   -webkit-box-shadow: 8px 7px 15px 9px rgba(0,0,0,0.54); 
@@ -216,7 +221,7 @@ font-style: italic;
   /* justify-content: center;
   align-items: center;
   text-align: center; */
-  top:25%;
+  top:45%;
   left:5%;
   width: 400px;
   -webkit-box-shadow: 8px 7px 15px 9px rgba(0,0,0,0.54); 
@@ -318,29 +323,24 @@ button:active{
 
 footer {
   background-image: url('../assets/img/sea.mp4');
-  /* position: relative; */
   position: fixed;
-  max-height: 30px; 
-  margin-top: 2%; 
+  max-height: 20px; 
+  margin-top: 4%; 
   width: 100%;
   float: right;
 }
 .footer-title-container {
   z-index: 1;
   position: absolute;
-  top: 20%;
+  top: 1%;
   left: 42%;
 
 }
 .video-container{
-  /* max-height: 40px; */
-  position: relative;
-  /* margin-top: 10%; */
   z-index: 0;
 }
 .footer-title {
 font-size: 30px;
-/* color: lightgrey; */
 color: #FFFFFF;
 background: #333333;
 text-shadow: 0 -1px 4px #FFF, 0 -2px 10px #ff0, 0 -10px 20px #ff8000, 0 -18px 40px #F00;
