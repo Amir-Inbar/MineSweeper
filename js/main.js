@@ -59,6 +59,7 @@ function restartLights() {
   }
 }
 function resetGame() {
+  gLevel.mines = 2;
   restartLights();
   document.querySelector('.modal').style.display = 'none';
   gGameStats = false;
@@ -82,7 +83,7 @@ function showAllMines() {
     var elCell = document.querySelector(
       `[data-i="${cellI}"][data-j="${cellj}"]`
     );
-    if (mineLocation.isMine) {
+    if (mineLocation.isMine || (mineLocation.isMine && mineLocation.isMarked)) {
       elCell.innerHTML = MINE;
       elCell.style.opacity = 1;
       mineLocation.isShown = true;
@@ -122,7 +123,7 @@ function checkGameOver(clickedCell, elCell) {
       gameStatusImage();
     }
 
-    if (clickedCell.isMine) {
+    if (clickedCell.isMine && !clickedCell.isMarked) {
       elCell.style.backgroundColor = 'red';
       clickedCell.isMarked = true;
       clickedCell['exploded'] = true;
@@ -194,11 +195,19 @@ function setGameLevel(levelSize = 10) {
     resetStopper();
     gTimer = false;
   }
+  restartLights();
   getPlayerBestScore(levelSize);
   var gBoard = createBoardGame(levelSize);
-  document.querySelector('.lives-count').innerHTML = '❤️❤️❤️';
   getCreateTable(gBoard);
+  document.querySelector('.lives-count').innerHTML = '❤️❤️❤️';
+  gSafeCount = 3;
+  document.querySelector(
+    '.safe-text'
+  ).innerText = `${gSafeCount} click available`;
+  gLossCounter = 0;
+  document.querySelector('.posmine-text').innerHTML = `Left:X mines`;
   gIsFirstCellClick = false;
+  manPosMine = false;
 
   for (let i = 0; i < gBoard.length; i++) {
     for (let j = 0; j < gBoard[i].length; j++) {

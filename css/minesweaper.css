@@ -115,6 +115,7 @@ border-radius: 20%;
   background-image: url('../assets/img/background.jpg');
   font-size: auto;
   border-radius: 50%;
+  
 }
 .mark-cell {
   border-radius: 50%;
@@ -123,9 +124,10 @@ border-radius: 20%;
   border: 1px solid lightsalmon;
   opacity: 1;
   color:lightsalmon ;
-  width: 60px;
-  height: 60px;
+  width: 35px;
+  height: 35px;
   font-size: 20px;
+  border: 1px solid black;
 }
 
 .cell-prop {
@@ -135,44 +137,48 @@ border-radius: 20%;
 background-color: teal;
   background: white;
   opacity: 0;
-  width: 60px;
-  height: 60px;
+  width: 35px;
+  height: 35px;
   transition: .6;
-  font-size: 30px;
+  font-size: 25px;
 }
 
 .med-table {
   width: 35px;
   height: 35px;
-  font-size: 25px;
+  font-size: 20px;
 }
 .lrg-table {
-  width: 30px;
-  height: 30px;
-  font-size: 20px;
+  width: 35px;
+  height: 35px;
+  font-size: 17px;
 }
 
 .show-cell{
   opacity: 1;
   text-align: center;
-  /* border: 1px solid black; */
-  /* background: white;
-  
-  /* transition: .9s; */
   opacity: 1;
-  width: 25px;
-  height: 25px;
-  transition: opacity .6
+  width: 35px;
+  height: 35px;
+  transition: opacity .6;
+  border: 1px solid black;
+
 }
 
 .curr-flag {
   text-align: center;
-  border-radius: 20%;
-  font-size: 15px;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  transition: .6;
+  font-size: 17px;  
   opacity: 1;
   /* width: auto;
   height: auto; */
   transition: .6;
+  text-align: center;
+  border: 1px solid black;
+
 }
 .modal {
   position: relative;
