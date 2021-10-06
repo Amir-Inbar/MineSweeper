@@ -92,8 +92,8 @@ function onLeftClick(elCell, ev, i, j) {
   }
   if (manPosMine) {
     gIsFirstCellClick = true;
-    gManPosCount--;
     setManPosMines(i, j, elCell);
+    gManPosCount--;
     console.log('leftclick', gManPosCount);
     return;
   }
@@ -130,7 +130,7 @@ function showCell(elCell, cell) {
   if (cell.isMarked) return;
   if (cell.isMine) {
     elCell.innerHTML = MINE;
-    mineSound.play();
+    // mineSound.play();
     gLossCounter++;
   } else if (cell.minesAroundCount) elCell.innerHTML = cell.minesAroundCount;
   else if (!cell.minesAroundCount) elCell.innerHTML = EMPTY;
@@ -248,7 +248,7 @@ function getUserMineCount() {
 }
 
 function setManPosMines(i, j, elCell) {
-  if (gManPosCount < 0) {
+  if (gManPosCount === 0) {
     for (let i = 0; i < gMinesElCells.length; i++) {
       gMinesElCells[i].classList.remove('mark-cell');
       gMinesElCells[i].classList.add('cell-prop');

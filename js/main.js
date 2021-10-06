@@ -127,6 +127,7 @@ function checkGameOver(clickedCell, elCell) {
       elCell.style.backgroundColor = 'red';
       clickedCell.isMarked = true;
       clickedCell['exploded'] = true;
+      mineSound.play();
     }
     if (gLossCounter === 1)
       document.querySelector('.lives-count').innerHTML = '❤️❤️';
