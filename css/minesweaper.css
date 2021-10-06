@@ -196,8 +196,20 @@ background-color: teal;
   width: 450px;
   height: 150px;
   background-repeat: round;
-  /* bottom: 60%; */
-  /* display: inline; */
+animation: modalmove 3s ease-in-out;
+z-index: 1;
+}
+@keyframes modalmove {
+  0%, 100% {
+    left:5%;
+    border-radius: 0%;
+    border: 5px solid lightcoral;
+  }
+  50% {
+    left:50%;
+    border-radius: 50%;
+    border: 5px solid lightcoral;
+  }
 }
 
 .modal-content-txt {
@@ -205,6 +217,7 @@ font-size: 30px;
 margin-top: 24%;
 background:linear-gradient(lightblue,lightgray, orange);
 font-style: italic;
+text-align: center;
 }
 
 .btn-parent-levels {
